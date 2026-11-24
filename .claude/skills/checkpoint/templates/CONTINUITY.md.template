@@ -1,0 +1,27 @@
+# 🔄 CONTINUITY — Compact/재시작 후 재개 가이드
+
+> 다음 세션이 컨텍스트를 잃어도 **이 문서만 보면 즉시 재개**할 수 있게 유지한다.
+> session_checkpoint.py가 아래 **"## Pending"** 섹션을 자동 추출해 체크포인트에 넣는다.
+> (A future session can resume from this doc alone. The checkpoint auto-extracts
+> the "## Pending" section below.)
+
+## Pending / 다음 명령 (Next actions)
+
+<!-- 다음 세션이 가장 먼저 할 일. 가장 위 = 가장 급함. -->
+<!-- What to do first next session, most-urgent on top. -->
+
+- [ ] (예시 / example) …
+
+## 현재 상태 (Current state)
+
+<!-- 무엇이 돌아가는 중인지, 무엇을 막 끝냈는지. -->
+<!-- What is running, what was just finished. -->
+
+-
+
+## 함정 / 주의 (Gotchas)
+
+<!-- 다음 세션이 모르면 시간 날릴 비자명한 제약. -->
+<!-- Non-obvious constraints a fresh session would otherwise trip on. -->
+
+-

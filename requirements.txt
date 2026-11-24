@@ -1,0 +1,22 @@
+# Python 3.11 기준. 시스템에 ffmpeg/ffprobe 별도 설치 필요(README 참고).
+python-dotenv==1.2.2
+requests==2.32.5
+Pillow==12.1.1
+numpy==2.4.4
+PyYAML==6.0.3
+
+# 이미지 생성 (fal.ai)
+fal_client==0.13.1
+
+# 받아쓰기·타이밍 (Whisper)
+faster-whisper==1.2.1
+
+# 선택: 무료 TTS 폴백 — 버전은 저자 환경에서 고정하지 않았다
+edge-tts>=6.1
+
+# 선택: Claude/Gemini를 스크립트에서 직접 부를 때(채점·자막 교정·이미지 검수)
+anthropic==0.89.0
+google-genai==1.66.0
+
+# 선택: 손그림(doodle_kit) SVG → PNG 변환용 헤드리스 브라우저. 설치 후 `playwright install chromium`
+playwright==1.59.0

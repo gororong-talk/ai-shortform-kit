@@ -1,0 +1,1781 @@
+{
+  "_meta": {
+    "provider": "Fish Audio S2-Pro",
+    "endpoint": "POST https://api.fish.audio/v1/tts",
+    "model_header": "s2-pro",
+    "request": "raw REST, Content-Type application/json (msgpack은 references 클로닝 때만)",
+    "key_env": "FISH_API_KEY (.env, 하드코딩 금지)",
+    "cost": "~$0.02/분 (UTF-8 byte 과금). 월 20편 $1~2",
+    "emotion_tags": "자유형 자연어 [bracket]: [excited][angry][sad][whispering][determined][calm] 등. 강도 [slightly]/[very]/[extremely]. 포즈 [break]/[long-break]",
+    "updated": "2026-06-19",
+    "safety": "★실존 인물(아이돌 karina/jisoo/haerin/노정의 등)·IP 캐릭터(Smash Bros/PaRappa/Alien stage/Cat Noir 등)·브랜드(배민광고) 보이스는 초상·저작권 위험으로 등록 제외. 아래는 모두 일반 설명형(비-실존).",
+    "audition": "audition:true = 실제 들어본 것. false = 메타데이터만(쓰기 전 `scripts/fish_voice.py say <key>`로 청취 권장)",
+    "sfx_note": "동물 보이스 = 동물 톤으로 '말하는' 음성. 진짜 짖는/우는 효과음(SFX) 아님 — SFX는 별도 소스 필요.",
+    "pool_note": "자동수집(한국어 인기순). 실존인/IP/브랜드 denylist 1차 필터 통과분. ★사용 전 제목 직접 확인 권장(자동필터라 누락 가능). 청취=`scripts/fish_voice.py`는 voices(큐레이션)만 지원 → pool은 id로 직접 say 가능하게 추후 확장."
+  },
+  "assignments": {
+    "sayeon_short": "f_soft_shorts",
+    "sayeon_long": "f_storytelling",
+    "wisdom": "f_anchor_calm",
+    "kids_mascot_mascot": "char_cat_cute",
+    "_note": "사연 숏폼=f_soft_shorts / 롱폼=f_storytelling / 명언=f_anchor_calm / 키즈 나레이션=kid_bright / 토리 마스코트=char_cat_cute. 2026-06-19 사용자 확정(나머지 추천대로). 상황별 교체는 pool에서.",
+    "kids_narrator": "kid_bright"
+  },
+  "voices": [
+    {
+      "key": "f_soft_shorts",
+      "id": "4e118bfbb83e401c84699c09b5f08257",
+      "title": "20대 여자 나긋나긋 쇼츠",
+      "gender": "f",
+      "age": "20s",
+      "style": "soft/나긋",
+      "langs": [
+        "ko"
+      ],
+      "roles": [
+        "사연 숏폼 나레이터"
+      ],
+      "audition": true
+    },
+    {
+      "key": "f_storytelling",
+      "id": "3f366bc073b449bca5838fb37d26ff62",
+      "title": "스토리텔링 여성(최다사용)",
+      "gender": "f",
+      "age": "young",
+      "style": "이야기/느긋",
+      "langs": [
+        "ko"
+      ],
+      "roles": [
+        "사연 롱폼 나레이터"
+      ],
+      "audition": true
+    },
+    {
+      "key": "f_generic1",
+      "id": "8cf5ee4cb0224c109852a206f185a05f",
+      "title": "보이스1(일반 여성)",
+      "gender": "f",
+      "age": "?",
+      "style": "무난/빠름",
+      "langs": [
+        "ko"
+      ],
+      "roles": [
+        "범용 여성"
+      ],
+      "audition": true
+    },
+    {
+      "key": "f_anchor_calm",
+      "id": "b49033bc65594eca9d4d7f34b9d81cf4",
+      "title": "아나운서 차분",
+      "gender": "f",
+      "age": "?",
+      "style": "차분/신뢰",
+      "langs": [
+        "ko"
+      ],
+      "roles": [
+        "명언",
+        "정보전달"
+      ],
+      "audition": false
+    },
+    {
+      "key": "f_fresh_girl",
+      "id": "7a31100f6d7a43e1858ec74176108a6e",
+      "title": "상큼 발랄 소녀",
+      "gender": "f",
+      "age": "teen",
+      "style": "발랄/상큼",
+      "langs": [
+        "ko"
+      ],
+      "roles": [
+        "밝은 톤",
+        "코믹"
+      ],
+      "audition": false
+    },
+    {
+      "key": "f_lively_mid",
+      "id": "236cb28501834c848a67074ded0f60f4",
+      "title": "발랄 중년 여자",
+      "gender": "f",
+      "age": "mid",
+      "style": "발랄",
+      "langs": [
+        "ko"
+      ],
+      "roles": [
+        "코믹",
+        "광고톤"
+      ],
+      "audition": false
+    },
+    {
+      "key": "m_clean_ssul",
+      "id": "18cf0b32e5d340cdb143be44d68f96d5",
+      "title": "남자 깔끔한 썰 목소리 20대",
+      "gender": "m",
+      "age": "20s",
+      "style": "깔끔/썰",
+      "langs": [
+        "ko"
+      ],
+      "roles": [
+        "사연 남성 나레이터"
+      ],
+      "audition": false
+    },
+    {
+      "key": "m_warm",
+      "id": "a00981b39b594767919231ac81e39df5",
+      "title": "다정한 남자",
+      "gender": "m",
+      "age": "?",
+      "style": "다정",
+      "langs": [
+        "ko"
+      ],
+      "roles": [
+        "따뜻한 톤"
+      ],
+      "audition": false
+    },
+    {
+      "key": "m_youtuber",
+      "id": "a590e02c1dd647ddafaf92451886113f",
+      "title": "30대 남자 유튜버",
+      "gender": "m",
+      "age": "30s",
+      "style": "유튜버",
+      "langs": [
+        "ko"
+      ],
+      "roles": [
+        "캐주얼 나레이션"
+      ],
+      "audition": false
+    },
+    {
+      "key": "m_doctor_calm",
+      "id": "be875f9627104513bc81d9db232b5099",
+      "title": "중저음 의사(신뢰·차분)",
+      "gender": "m",
+      "age": "?",
+      "style": "중저음/신뢰",
+      "langs": [
+        "ko"
+      ],
+      "roles": [
+        "명언 남성",
+        "신뢰 정보"
+      ],
+      "audition": false
+    },
+    {
+      "key": "m_lively",
+      "id": "84e986d633ba4abab0e971cc2b079361",
+      "title": "활기찬 한국어 남자",
+      "gender": "m",
+      "age": "?",
+      "style": "활기",
+      "langs": [
+        "ko"
+      ],
+      "roles": [
+        "코믹",
+        "활기"
+      ],
+      "audition": false
+    },
+    {
+      "key": "elder_grandma_warm",
+      "id": "79dde601eeeb40fe8e6844a8fd48bb91",
+      "title": "정겨운 할머니",
+      "gender": "f",
+      "age": "elder",
+      "style": "정겨움",
+      "langs": [
+        "ko"
+      ],
+      "roles": [
+        "사연 등장인물(할머니)",
+        "시어머니"
+      ],
+      "audition": false
+    },
+    {
+      "key": "elder_grandma_soft",
+      "id": "704caffe623c490daf890baed235f43a",
+      "title": "온화한 할머니",
+      "gender": "f",
+      "age": "elder",
+      "style": "온화",
+      "langs": [
+        "ko"
+      ],
+      "roles": [
+        "사연 등장인물(할머니)"
+      ],
+      "audition": false
+    },
+    {
+      "key": "elder_grandpa_warm",
+      "id": "23e7b2f14e104d73a439ac943be921e1",
+      "title": "푸근한 할아버지",
+      "gender": "m",
+      "age": "elder",
+      "style": "푸근",
+      "langs": [
+        "ko"
+      ],
+      "roles": [
+        "사연 등장인물(할아버지)"
+      ],
+      "audition": false
+    },
+    {
+      "key": "elder_uncle_dialect",
+      "id": "1d137d76bf2d47ffa60aac04259c16ad",
+      "title": "60대 사투리 아저씨",
+      "gender": "m",
+      "age": "60s",
+      "style": "사투리",
+      "langs": [
+        "ko"
+      ],
+      "roles": [
+        "사연 등장인물(아저씨)",
+        "사투리"
+      ],
+      "audition": false
+    },
+    {
+      "key": "kid_bright",
+      "id": "710c80a7fbb740deb6442e93825edab3",
+      "title": "밝고 활기찬 아이",
+      "gender": "child",
+      "age": "child",
+      "style": "밝음/활기",
+      "langs": [
+        "ko"
+      ],
+      "roles": [
+        "키즈 나레이션"
+      ],
+      "audition": false
+    },
+    {
+      "key": "kid_cheerful",
+      "id": "27220d951b6749e886200b72fd34fbdf",
+      "title": "명랑한 아이 목소리",
+      "gender": "child",
+      "age": "child",
+      "style": "명랑",
+      "langs": [
+        "ko"
+      ],
+      "roles": [
+        "키즈 나레이션"
+      ],
+      "audition": false
+    },
+    {
+      "key": "baby_playful",
+      "id": "6530328d0db74cf6b63af9e873170e36",
+      "title": "장난스러운 아기 보이스",
+      "gender": "child",
+      "age": "baby",
+      "style": "장난",
+      "langs": [
+        "ko"
+      ],
+      "roles": [
+        "키즈 캐릭터"
+      ],
+      "audition": false
+    },
+    {
+      "key": "char_cat_cute",
+      "id": "b2bebd98a55f41969e6447f46ba7bfaf",
+      "title": "귀여운 고양이 목소리",
+      "gender": "char",
+      "age": "?",
+      "style": "고양이톤",
+      "langs": [
+        "ko"
+      ],
+      "roles": [
+        "토리 마스코트 후보",
+        "키즈"
+      ],
+      "audition": false
+    },
+    {
+      "key": "char_dog",
+      "id": "fc004b9c25844010b3b7117843b5106f",
+      "title": "강아지",
+      "gender": "char",
+      "age": "?",
+      "style": "강아지톤",
+      "langs": [
+        "ko"
+      ],
+      "roles": [
+        "동물 캐릭터",
+        "코믹"
+      ],
+      "audition": false
+    },
+    {
+      "key": "char_animal_wild",
+      "id": "e99ee3c2cf82461097e8fda853185ead",
+      "title": "과격한 동물",
+      "gender": "char",
+      "age": "?",
+      "style": "과격 동물톤",
+      "langs": [
+        "ko"
+      ],
+      "roles": [
+        "코믹 캐릭터"
+      ],
+      "audition": false
+    }
+  ],
+  "pool": [
+    {
+      "id": "4e298b87e291459aa9ede6ed07a6b336",
+      "title": "voice han ngày 09-06",
+      "langs": [
+        "ko"
+      ],
+      "likes": 13,
+      "tasks": 83357
+    },
+    {
+      "id": "864af2594b884186bdb623aea1d5687f",
+      "title": "voice han 21-06",
+      "langs": [
+        "ko"
+      ],
+      "likes": 4,
+      "tasks": 79762
+    },
+    {
+      "id": "df89fc23b5364c2dbbe812b2f58ef22e",
+      "title": "giọng nữ trẻ  kể truyện 22-08",
+      "langs": [
+        "ko"
+      ],
+      "likes": 5,
+      "tasks": 17062
+    },
+    {
+      "id": "ed763b05d90b470284150bbc49a8d9e1",
+      "title": "애덤",
+      "langs": [
+        "ko"
+      ],
+      "likes": 43,
+      "tasks": 4879
+    },
+    {
+      "id": "a9574d6184714eac96a0a892b719289f",
+      "title": "진우-기쁨-",
+      "langs": [
+        "ko"
+      ],
+      "likes": 47,
+      "tasks": 4123
+    },
+    {
+      "id": "0ccd4dc7f23d4935956e225e158484c9",
+      "title": "20대 여성",
+      "langs": [
+        "ko"
+      ],
+      "likes": 19,
+      "tasks": 3183
+    },
+    {
+      "id": "7404736693a14c02ada58bddc4705b18",
+      "title": "بنت عراقيه",
+      "langs": [
+        "ko",
+        "sv",
+        "ja",
+        "hi",
+        "sq",
+        "fr",
+        "lt",
+        "en",
+        "tr",
+        "ar",
+        "es",
+        "fa"
+      ],
+      "likes": 2,
+      "tasks": 2969
+    },
+    {
+      "id": "5a53fa5e9d3147c692abbc9327e588ba",
+      "title": "유툽",
+      "langs": [
+        "ko"
+      ],
+      "likes": 22,
+      "tasks": 2939
+    },
+    {
+      "id": "a4f17b4e02e34f4c9c84627859988cc1",
+      "title": "Gigi (Brawl Stars)",
+      "langs": [
+        "ko",
+        "en",
+        "ja",
+        "id",
+        "es"
+      ],
+      "likes": 27,
+      "tasks": 2907
+    },
+    {
+      "id": "99b4b305458e43018c6b75d251584b2e",
+      "title": "wonhee lee (illit!!)",
+      "langs": [
+        "en",
+        "ko"
+      ],
+      "likes": 23,
+      "tasks": 2853
+    },
+    {
+      "id": "29da56534ac84ccd81092be4359a1639",
+      "title": "개인 기본음성 - 나레이션",
+      "langs": [
+        "ko"
+      ],
+      "likes": 33,
+      "tasks": 2826
+    },
+    {
+      "id": "bfdf5f0ad6d3401281c1f0196fc4a7de",
+      "title": "Kim soo-Hyun",
+      "langs": [
+        "ko"
+      ],
+      "likes": 3,
+      "tasks": 2523
+    },
+    {
+      "id": "4c354c7e374848368a884cd3aa22d6e1",
+      "title": "Merge Fellas Voice",
+      "langs": [
+        "pt",
+        "tl",
+        "it",
+        "id",
+        "es",
+        "en",
+        "ko",
+        "sv"
+      ],
+      "likes": 7,
+      "tasks": 2429
+    },
+    {
+      "id": "ce9993b625c848b6a9856fd41e4ae00c",
+      "title": "Song joongki voice ",
+      "langs": [
+        "ko"
+      ],
+      "likes": 18,
+      "tasks": 2322
+    },
+    {
+      "id": "c460cd83587e4b828ff0938b2313c406",
+      "title": "ellen joe kr",
+      "langs": [
+        "ko"
+      ],
+      "likes": 17,
+      "tasks": 2306
+    },
+    {
+      "id": "affcff62a84e451b83d3288dae99e664",
+      "title": "노무현",
+      "langs": [
+        "ko"
+      ],
+      "likes": 10,
+      "tasks": 2276
+    },
+    {
+      "id": "3a039859e263415c94df49ec9a57dee5",
+      "title": "Riki Nishimura ",
+      "langs": [
+        "en",
+        "ko"
+      ],
+      "likes": 5,
+      "tasks": 2189
+    },
+    {
+      "id": "acfa3a9c225742368c72da9c728b972c",
+      "title": "Jeemin",
+      "langs": [
+        "ko"
+      ],
+      "likes": 0,
+      "tasks": 2109
+    },
+    {
+      "id": "90ccdc06919f4731a533f27b511cb01f",
+      "title": "KORECE ERKEK SES ",
+      "langs": [
+        "ko"
+      ],
+      "likes": 3,
+      "tasks": 2079
+    },
+    {
+      "id": "5f2c07ad18624123b1402228617c80ca",
+      "title": "Hitori Gotoh",
+      "langs": [
+        "ja",
+        "ko"
+      ],
+      "likes": 12,
+      "tasks": 2055
+    },
+    {
+      "id": "d5daef3484474a63a429f5952857f70c",
+      "title": "한창민 쇼핑",
+      "langs": [
+        "ko"
+      ],
+      "likes": 16,
+      "tasks": 1867
+    },
+    {
+      "id": "db9c58be76954861a561c83dcfd2bf74",
+      "title": "AD Announcer",
+      "langs": [
+        "en",
+        "es",
+        "ko"
+      ],
+      "likes": 23,
+      "tasks": 1856
+    },
+    {
+      "id": "13eefb9b15e84b849fec586a267a1eb9",
+      "title": "ケン",
+      "langs": [
+        "ko",
+        "ja"
+      ],
+      "likes": 19,
+      "tasks": 1769
+    },
+    {
+      "id": "29dbc50c38a14e029a6dbcc29b507f43",
+      "title": "yujin",
+      "langs": [
+        "ko"
+      ],
+      "likes": 7,
+      "tasks": 1733
+    },
+    {
+      "id": "85ac82e33b014a16abe9d0b4b9b0cb68",
+      "title": "애니메이션",
+      "langs": [
+        "ko"
+      ],
+      "likes": 25,
+      "tasks": 1729
+    },
+    {
+      "id": "ea0fccb159d8467880ac513bd38aa912",
+      "title": "squid game woman korean",
+      "langs": [
+        "ko"
+      ],
+      "likes": 5,
+      "tasks": 1691
+    },
+    {
+      "id": "41a22d6da0624768a444bf0647434484",
+      "title": "한지성HAN jisung",
+      "langs": [
+        "ko"
+      ],
+      "likes": 13,
+      "tasks": 1597
+    },
+    {
+      "id": "e591b8ccd8e347a9ab72cdb85a5994f9",
+      "title": "Woniee",
+      "langs": [
+        "ko",
+        "en"
+      ],
+      "likes": 8,
+      "tasks": 1525
+    },
+    {
+      "id": "e74f7167a0ed4dd08b7b45b703b78650",
+      "title": "Jimin Voice",
+      "langs": [
+        "ko"
+      ],
+      "likes": 0,
+      "tasks": 1514
+    },
+    {
+      "id": "078c1b6c34714bba92371c3386716823",
+      "title": "韩男",
+      "langs": [
+        "ko"
+      ],
+      "likes": 11,
+      "tasks": 1490
+    },
+    {
+      "id": "79696c61cf034b3e84b5fd7a90169498",
+      "title": "minju！！",
+      "langs": [
+        "ko"
+      ],
+      "likes": 16,
+      "tasks": 1460
+    },
+    {
+      "id": "7ebceb98b749400387910979b7aa9d6b",
+      "title": "wonhee",
+      "langs": [
+        "ko"
+      ],
+      "likes": 12,
+      "tasks": 1419
+    },
+    {
+      "id": "b605e5a3ebc84cb28fabaa0c8ad7f525",
+      "title": "Don Quixote",
+      "langs": [
+        "ko"
+      ],
+      "likes": 1,
+      "tasks": 1397
+    },
+    {
+      "id": "59da246e22044c599a54c1b2a689dba4",
+      "title": "VJ특공대 박기량 성우",
+      "langs": [
+        "ko"
+      ],
+      "likes": 15,
+      "tasks": 1379
+    },
+    {
+      "id": "c16c2f2f876243d0ba74e979a77cc521",
+      "title": "太阳",
+      "langs": [
+        "ko"
+      ],
+      "likes": 10,
+      "tasks": 1360
+    },
+    {
+      "id": "d74f023d1525420797aed41b5d421c05",
+      "title": "똑부러지는 긍정 아나운서 여자",
+      "langs": [
+        "ko"
+      ],
+      "likes": 21,
+      "tasks": 1357
+    },
+    {
+      "id": "06988c0558c4438684bd8ad66d04a7fa",
+      "title": "kim sunoo",
+      "langs": [
+        "en",
+        "ko"
+      ],
+      "likes": 1,
+      "tasks": 1347
+    },
+    {
+      "id": "750e0d05ab944e9ba6a4d41aa999021e",
+      "title": "나레이션",
+      "langs": [
+        "ko"
+      ],
+      "likes": 9,
+      "tasks": 1297
+    },
+    {
+      "id": "67ede89a20a0433fb4c8d3de046e03ae",
+      "title": "남학생 목소리",
+      "langs": [
+        "ko"
+      ],
+      "likes": 7,
+      "tasks": 1277
+    },
+    {
+      "id": "ff2945cbfd274c85b440bd39d8cb3729",
+      "title": "여자 성우 A",
+      "langs": [
+        "ko"
+      ],
+      "likes": 42,
+      "tasks": 1246
+    },
+    {
+      "id": "9a629b42cded4a2d87de27150722f2d3",
+      "title": "웃길개용 클로닝",
+      "langs": [
+        "ko"
+      ],
+      "likes": 2,
+      "tasks": 1236
+    },
+    {
+      "id": "b8e03b48d2f34bbbabf4576f535568de",
+      "title": "Lee Know ",
+      "langs": [
+        "ko"
+      ],
+      "likes": 3,
+      "tasks": 1226
+    },
+    {
+      "id": "447e3daeeeb147e9b6c8fef84938ff1d",
+      "title": "Ess (Japanese Dub)",
+      "langs": [
+        "en",
+        "ko",
+        "ja"
+      ],
+      "likes": 18,
+      "tasks": 1202
+    },
+    {
+      "id": "311ae4f3c8e344d5a40727324667018d",
+      "title": "윤석열 대통령",
+      "langs": [
+        "ko"
+      ],
+      "likes": 5,
+      "tasks": 1182
+    },
+    {
+      "id": "b0d65afef3544f49aa5d038ee724cd51",
+      "title": "Sana",
+      "langs": [
+        "ko"
+      ],
+      "likes": 18,
+      "tasks": 1174
+    },
+    {
+      "id": "67d446493ff6406d83ff72d5f1aa011d",
+      "title": "Shinobu Kocho",
+      "langs": [
+        "ja",
+        "ko",
+        "en"
+      ],
+      "likes": 17,
+      "tasks": 1172
+    },
+    {
+      "id": "23b7d1bf17a34dac82d0c97aab781082",
+      "title": "현우 슬픔(D) ",
+      "langs": [
+        "ko"
+      ],
+      "likes": 25,
+      "tasks": 1161
+    },
+    {
+      "id": "46939387dd944a45a399bd92b8de52cb",
+      "title": "20대 여지_내돈내산 쇼츠",
+      "langs": [
+        "ko"
+      ],
+      "likes": 14,
+      "tasks": 1153
+    },
+    {
+      "id": "913c2999317c47bb8cf339bee9e20c14",
+      "title": "Hyunjin",
+      "langs": [
+        "ko"
+      ],
+      "likes": 16,
+      "tasks": 1146
+    },
+    {
+      "id": "5c0a1544dd41412e996e8d9d82eb5d8b",
+      "title": "애덤 tts",
+      "langs": [
+        "ko"
+      ],
+      "likes": 10,
+      "tasks": 1145
+    },
+    {
+      "id": "d4c65d5860504eb197b6943c3ff0f289",
+      "title": "설동주 연습",
+      "langs": [
+        "ko"
+      ],
+      "likes": 3,
+      "tasks": 1095
+    },
+    {
+      "id": "7102bef6a0c74f8692df55fa2d96910f",
+      "title": "MJ ASTRO",
+      "langs": [
+        "ko"
+      ],
+      "likes": 1,
+      "tasks": 1088
+    },
+    {
+      "id": "4184b2ca8d58445685ff16af41925a95",
+      "title": "Hwang in yeop",
+      "langs": [
+        "ko"
+      ],
+      "likes": 13,
+      "tasks": 1064
+    },
+    {
+      "id": "50e39eaaf046410698c9f803f23474f3",
+      "title": "30대 남자 인터뷰어",
+      "langs": [
+        "ko"
+      ],
+      "likes": 17,
+      "tasks": 1064
+    },
+    {
+      "id": "54f52a4d2b994612a30306b4a2a95758",
+      "title": "20대여성쇼츠(인플루언서스타일)",
+      "langs": [
+        "ko"
+      ],
+      "likes": 7,
+      "tasks": 1057
+    },
+    {
+      "id": "fe2d9dbf4ca94d469b69fa682ceba40f",
+      "title": "Myungjun ",
+      "langs": [
+        "ko"
+      ],
+      "likes": 3,
+      "tasks": 1056
+    },
+    {
+      "id": "a980ea82d5f34963972c0a7fa989acfd",
+      "title": "迪奥布兰度",
+      "langs": [
+        "zh",
+        "ja",
+        "ko",
+        "en",
+        "de"
+      ],
+      "likes": 14,
+      "tasks": 1055
+    },
+    {
+      "id": "228483c80ba140b1a9ac5fae9aa53b65",
+      "title": "Asa",
+      "langs": [
+        "ko"
+      ],
+      "likes": 7,
+      "tasks": 1048
+    },
+    {
+      "id": "f7e5005f29d04f00942c0b08137458e3",
+      "title": "Chaewon ",
+      "langs": [
+        "ko",
+        "en"
+      ],
+      "likes": 16,
+      "tasks": 1034
+    },
+    {
+      "id": "256fdf189a6b4d2baf2dc6013a00f837",
+      "title": "sức khỏe tuổi 60",
+      "langs": [
+        "ko"
+      ],
+      "likes": 3,
+      "tasks": 1014
+    },
+    {
+      "id": "02f2bdaf3830498088246a16f184b4cf",
+      "title": "성우",
+      "langs": [
+        "ko"
+      ],
+      "likes": 23,
+      "tasks": 997
+    },
+    {
+      "id": "543a78acbfd34bc8b34d359e63fae5ef",
+      "title": "Jihyo",
+      "langs": [
+        "ko"
+      ],
+      "likes": 4,
+      "tasks": 996
+    },
+    {
+      "id": "836154f53e074a55b1bdc0fdab02dd91",
+      "title": "Rien",
+      "langs": [
+        "ko"
+      ],
+      "likes": 2,
+      "tasks": 972
+    },
+    {
+      "id": "66e414129a2044ef92e85fed0a0c707a",
+      "title": "Erina Makina",
+      "langs": [
+        "en",
+        "ko"
+      ],
+      "likes": 3,
+      "tasks": 946
+    },
+    {
+      "id": "7d132bf3fdce4a7cb1793b91a31a1576",
+      "title": "차분한 이야기꾼",
+      "langs": [
+        "ko"
+      ],
+      "likes": 5,
+      "tasks": 920
+    },
+    {
+      "id": "b4caa3c8c2d745d1a62588b32502d160",
+      "title": "全斗焕（MBC五共）",
+      "langs": [
+        "ko"
+      ],
+      "likes": 23,
+      "tasks": 920
+    },
+    {
+      "id": "c45228a141ea4f4087bcd31429f7b7f4",
+      "title": "오징어 게임 음성",
+      "langs": [
+        "ko"
+      ],
+      "likes": 7,
+      "tasks": 912
+    },
+    {
+      "id": "e6b5bdf19d854d2780271b2da2f7303f",
+      "title": "Park Jimin ",
+      "langs": [
+        "ko",
+        "en"
+      ],
+      "likes": 2,
+      "tasks": 898
+    },
+    {
+      "id": "a6b5c3ebd1b1497d93456cd034c419fb",
+      "title": "Felix",
+      "langs": [
+        "ko"
+      ],
+      "likes": 1,
+      "tasks": 891
+    },
+    {
+      "id": "769e6f65ba05488b9fe5d34735f3e03a",
+      "title": "Suji 4",
+      "langs": [
+        "ko"
+      ],
+      "likes": 5,
+      "tasks": 890
+    },
+    {
+      "id": "d160f49c212c4bcf8db4f08f8289834f",
+      "title": "번개걸",
+      "langs": [
+        "ko"
+      ],
+      "likes": 8,
+      "tasks": 876
+    },
+    {
+      "id": "bb9f11305b504920a1bab349c8269ff5",
+      "title": "Dudu",
+      "langs": [
+        "ko"
+      ],
+      "likes": 2,
+      "tasks": 869
+    },
+    {
+      "id": "6004f0685c6749b3b004fc1cf432844f",
+      "title": "Kim Jong-un",
+      "langs": [
+        "ko"
+      ],
+      "likes": 11,
+      "tasks": 865
+    },
+    {
+      "id": "0cb0b041464346b2954b3821a54b07ed",
+      "title": "잔재미 하이톤",
+      "langs": [
+        "ko"
+      ],
+      "likes": 0,
+      "tasks": 856
+    },
+    {
+      "id": "71b76d988e1f4a89a67fb159e83a5037",
+      "title": "金正恩",
+      "langs": [
+        "ko"
+      ],
+      "likes": 11,
+      "tasks": 847
+    },
+    {
+      "id": "9ef8f9e435a344568462fc9c274f23b0",
+      "title": "해짜목소리",
+      "langs": [
+        "ko"
+      ],
+      "likes": 16,
+      "tasks": 840
+    },
+    {
+      "id": "095f289bf6bf42b68f07dfdf3f3c5fb4",
+      "title": "피부과의사",
+      "langs": [
+        "ko"
+      ],
+      "likes": 19,
+      "tasks": 821
+    },
+    {
+      "id": "f3f82a3ecd1d4f97822de868a9fd9803",
+      "title": "Sana",
+      "langs": [
+        "ko",
+        "en"
+      ],
+      "likes": 9,
+      "tasks": 819
+    },
+    {
+      "id": "21e8cb37507f414c8c458c03870931f2",
+      "title": "Han Jisung",
+      "langs": [
+        "ko"
+      ],
+      "likes": 7,
+      "tasks": 811
+    },
+    {
+      "id": "3838c1f280834699a58e039b2e47554d",
+      "title": "faust",
+      "langs": [
+        "ko"
+      ],
+      "likes": 5,
+      "tasks": 809
+    },
+    {
+      "id": "4086ca177f794cdf9928e179e4112469",
+      "title": "Sullyoon",
+      "langs": [
+        "ko"
+      ],
+      "likes": 4,
+      "tasks": 808
+    },
+    {
+      "id": "61c15a82fe964c76b01313035b81d4ce",
+      "title": "쇼핑_남성",
+      "langs": [
+        "ko"
+      ],
+      "likes": 7,
+      "tasks": 800
+    },
+    {
+      "id": "03a79d68ca184930a1215f9b1b8eb5b5",
+      "title": "20대 여자 성우 수정용",
+      "langs": [
+        "ko"
+      ],
+      "likes": 8,
+      "tasks": 796
+    },
+    {
+      "id": "5ebff631cd734a7ca9e32fc1a5f8eb3a",
+      "title": "키티",
+      "langs": [
+        "ko"
+      ],
+      "likes": 15,
+      "tasks": 786
+    },
+    {
+      "id": "578d7a1f9ee94daa9751ffe5e42b33df",
+      "title": "구하리",
+      "langs": [
+        "ko"
+      ],
+      "likes": 10,
+      "tasks": 773
+    },
+    {
+      "id": "136a377398bc4f5dba0101259a9b3eea",
+      "title": "해짜 보이스3",
+      "langs": [
+        "ko"
+      ],
+      "likes": 6,
+      "tasks": 771
+    },
+    {
+      "id": "5d24ed676b33440bb927da8a28147233",
+      "title": "스피키",
+      "langs": [
+        "ko"
+      ],
+      "likes": 7,
+      "tasks": 771
+    },
+    {
+      "id": "048a61e0b1d647e1a8507e39ba15348a",
+      "title": "나레이션2",
+      "langs": [
+        "ko"
+      ],
+      "likes": 12,
+      "tasks": 762
+    },
+    {
+      "id": "3a0bc39f811941409551999342fcb465",
+      "title": "주현영",
+      "langs": [
+        "ko"
+      ],
+      "likes": 5,
+      "tasks": 755
+    },
+    {
+      "id": "57f1f59ddba7471db2b3efac28f24102",
+      "title": "kroean",
+      "langs": [
+        "ko"
+      ],
+      "likes": 15,
+      "tasks": 753
+    },
+    {
+      "id": "151c39c7cabc47ee864ebd5791d7c988",
+      "title": "진지한 전문 남성",
+      "langs": [
+        "ko"
+      ],
+      "likes": 1,
+      "tasks": 747
+    },
+    {
+      "id": "b783d986c559448f93cae7d9c9dc686d",
+      "title": "Voice of a squid game guard",
+      "langs": [
+        "ko"
+      ],
+      "likes": 2,
+      "tasks": 737
+    },
+    {
+      "id": "448d6d8652d6421ca87f10838a68d029",
+      "title": "활기찬 게임 진행",
+      "langs": [
+        "ko"
+      ],
+      "likes": 0,
+      "tasks": 732
+    },
+    {
+      "id": "b6f9a9f8909d423684b73f3aa914a706",
+      "title": "Nayeon ",
+      "langs": [
+        "ko"
+      ],
+      "likes": 5,
+      "tasks": 715
+    },
+    {
+      "id": "089698c75da64f69876742fca801561d",
+      "title": "기미여자5",
+      "langs": [
+        "ko"
+      ],
+      "likes": 7,
+      "tasks": 709
+    },
+    {
+      "id": "18fe941fd99a4dd8b0f2c5c1240688f9",
+      "title": "오징어",
+      "langs": [
+        "ko"
+      ],
+      "likes": 24,
+      "tasks": 702
+    },
+    {
+      "id": "ca0aaaf194e74c3db9c305f4da4dde54",
+      "title": "강희선 성우",
+      "langs": [
+        "ko"
+      ],
+      "likes": 9,
+      "tasks": 697
+    },
+    {
+      "id": "4f9d5a1df6e14710b8695a9cc710f0ac",
+      "title": "Mizi- Alienstage",
+      "langs": [
+        "ko"
+      ],
+      "likes": 3,
+      "tasks": 692
+    },
+    {
+      "id": "6b340b22a08f4f88a0a17161ea7b44a8",
+      "title": "Park jimin ",
+      "langs": [
+        "ko",
+        "en"
+      ],
+      "likes": 4,
+      "tasks": 690
+    },
+    {
+      "id": "93fc39bdf0fe4df4acadd86d81926f51",
+      "title": "남성설명2",
+      "langs": [
+        "ko"
+      ],
+      "likes": 2,
+      "tasks": 682
+    },
+    {
+      "id": "234c8d49f6354685ba8e0fcbdca038d8",
+      "title": "활기찬 게임 보이스",
+      "langs": [
+        "ko"
+      ],
+      "likes": 0,
+      "tasks": 650
+    },
+    {
+      "id": "9f4002fb91c1445ab1f693de97959b8b",
+      "title": "Yi sang (Limbus company) ",
+      "langs": [
+        "ko"
+      ],
+      "likes": 5,
+      "tasks": 644
+    },
+    {
+      "id": "499e7f43621541959d19c5c176e2e8f3",
+      "title": "wonhee lee ⋆. 𐙚 ˚❀⋆.ೃ࿔*:･",
+      "langs": [
+        "en",
+        "ko"
+      ],
+      "likes": 5,
+      "tasks": 636
+    },
+    {
+      "id": "e2c8e23182ae4faebc3b24f4a8b70c1d",
+      "title": "Roland",
+      "langs": [
+        "ko"
+      ],
+      "likes": 3,
+      "tasks": 635
+    },
+    {
+      "id": "111be367c7b64c2b9675227aab4531a7",
+      "title": "발키리-중전톤- 게임톤-",
+      "langs": [
+        "ko"
+      ],
+      "likes": 14,
+      "tasks": 632
+    },
+    {
+      "id": "32e3c13d8ddd4a3dbe3dbd74c0bb2d7c",
+      "title": "성우(2)",
+      "langs": [
+        "ko"
+      ],
+      "likes": 4,
+      "tasks": 628
+    },
+    {
+      "id": "11efedd695af4eef9e19f1a136561f4b",
+      "title": "나띵",
+      "langs": [
+        "ko"
+      ],
+      "likes": 9,
+      "tasks": 627
+    },
+    {
+      "id": "cbadd9935dae44669a2c251b55d00f7e",
+      "title": "CWON",
+      "langs": [
+        "ko"
+      ],
+      "likes": 1,
+      "tasks": 624
+    },
+    {
+      "id": "818a5c76dfe24031ac6ea84d30b7b6bd",
+      "title": "Lei Heng",
+      "langs": [
+        "ko"
+      ],
+      "likes": 3,
+      "tasks": 618
+    },
+    {
+      "id": "3e570b6e63e24a41839fb23bc37ae2d1",
+      "title": "女声",
+      "langs": [
+        "zh",
+        "ko"
+      ],
+      "likes": 6,
+      "tasks": 611
+    },
+    {
+      "id": "85f5d0e9bb484e518246b9a80f927e20",
+      "title": "Ri Chun-hee (리춘히)",
+      "langs": [
+        "ko"
+      ],
+      "likes": 8,
+      "tasks": 609
+    },
+    {
+      "id": "bd5996e17d9f4205856d1d44e6120e95",
+      "title": "CHOU TZUYU",
+      "langs": [
+        "ko"
+      ],
+      "likes": 4,
+      "tasks": 608
+    },
+    {
+      "id": "f8c135b23d3f4d8a906965f56b4caf25",
+      "title": "Sim Jaeyun",
+      "langs": [
+        "en",
+        "ko"
+      ],
+      "likes": 1,
+      "tasks": 608
+    },
+    {
+      "id": "34835178d7dc4dcab6c4b1bd86e702e7",
+      "title": "Jumin han",
+      "langs": [
+        "ko"
+      ],
+      "likes": 5,
+      "tasks": 606
+    },
+    {
+      "id": "6d439225a09e4ed09714de40d0d819c9",
+      "title": "Felix",
+      "langs": [
+        "ko"
+      ],
+      "likes": 6,
+      "tasks": 597
+    },
+    {
+      "id": "cd8117c0d6ce4b42bc608bab66bdb831",
+      "title": "وونيونغ",
+      "langs": [
+        "ko"
+      ],
+      "likes": 2,
+      "tasks": 597
+    },
+    {
+      "id": "c0a98f0ff639476190ad8f6e1e684980",
+      "title": "3040 엄마",
+      "langs": [
+        "ko"
+      ],
+      "likes": 7,
+      "tasks": 588
+    },
+    {
+      "id": "f6beac22c00545edb0c11b8219cad259",
+      "title": "다큐멘터리",
+      "langs": [
+        "ko"
+      ],
+      "likes": 5,
+      "tasks": 588
+    },
+    {
+      "id": "42621f1ae78b43779fe7c8b5db5f1e00",
+      "title": "hyunjin ",
+      "langs": [
+        "ko"
+      ],
+      "likes": 7,
+      "tasks": 586
+    },
+    {
+      "id": "0ba6e9debb9c4710ad023b4d075797af",
+      "title": "Iroha",
+      "langs": [
+        "ko"
+      ],
+      "likes": 6,
+      "tasks": 583
+    },
+    {
+      "id": "6f1a035212984cba8a8d91e315acfa33",
+      "title": "rami (babymonster)",
+      "langs": [
+        "ko"
+      ],
+      "likes": 6,
+      "tasks": 583
+    },
+    {
+      "id": "a7f1f8c397d74141b36a2ff77ff07f70",
+      "title": "모쓸목소리",
+      "langs": [
+        "ko"
+      ],
+      "likes": 9,
+      "tasks": 575
+    },
+    {
+      "id": "3b62404c2f854d01aa5f91540addd63e",
+      "title": "[20대] 광고톤 여성 나레이션",
+      "langs": [
+        "ko"
+      ],
+      "likes": 7,
+      "tasks": 574
+    },
+    {
+      "id": "6c40beb35e794cc0aa230d002b6ded1a",
+      "title": "Nayeon",
+      "langs": [
+        "ko"
+      ],
+      "likes": 7,
+      "tasks": 572
+    },
+    {
+      "id": "1078a5158d9c40bd812c08b5599eb114",
+      "title": "迪拉熊",
+      "langs": [
+        "zh",
+        "ja",
+        "ko"
+      ],
+      "likes": 5,
+      "tasks": 565
+    },
+    {
+      "id": "b1573e087ec24ae1ac26b29c79974f0d",
+      "title": "컴퓨터 실험 음성",
+      "langs": [
+        "ko"
+      ],
+      "likes": 2,
+      "tasks": 560
+    },
+    {
+      "id": "87d3970929bf47e19cf38472eda5764d",
+      "title": "한국 성우",
+      "langs": [
+        "ko"
+      ],
+      "likes": 16,
+      "tasks": 556
+    },
+    {
+      "id": "34b1ce40e2fb4669ab63a31de5659870",
+      "title": "남병철 클로닝",
+      "langs": [
+        "ko"
+      ],
+      "likes": 5,
+      "tasks": 550
+    },
+    {
+      "id": "ca106b3227144c778c21fde703e7d153",
+      "title": "더펄슨",
+      "langs": [
+        "ko"
+      ],
+      "likes": 10,
+      "tasks": 550
+    },
+    {
+      "id": "eb240c77476444f4908e4e4cfb02a24e",
+      "title": "Wonyo",
+      "langs": [
+        "ko"
+      ],
+      "likes": 0,
+      "tasks": 548
+    },
+    {
+      "id": "29d550dbc1ba486494d92656082c2f12",
+      "title": "예슬클로닝 쇼츠",
+      "langs": [
+        "ko"
+      ],
+      "likes": 8,
+      "tasks": 547
+    },
+    {
+      "id": "44888ebedef84e67ba57bcb66f664f27",
+      "title": "Nayeon",
+      "langs": [
+        "ko"
+      ],
+      "likes": 4,
+      "tasks": 546
+    },
+    {
+      "id": "6014ccd05c5d4368b51a30a2d061865b",
+      "title": "아이치 고퀄",
+      "langs": [
+        "ko"
+      ],
+      "likes": 5,
+      "tasks": 546
+    },
+    {
+      "id": "4a81bbbb5cd44f22922bf934cb93b369",
+      "title": "일반여성2",
+      "langs": [
+        "ko"
+      ],
+      "likes": 11,
+      "tasks": 544
+    },
+    {
+      "id": "92bf82d6ed6e41f58fd40d97af2c3ffa",
+      "title": "Nayeon ",
+      "langs": [
+        "ko"
+      ],
+      "likes": 4,
+      "tasks": 537
+    },
+    {
+      "id": "1e2b9f643da34281ad2aeec22f21e673",
+      "title": "melodie 麦乐迪",
+      "langs": [
+        "ko",
+        "en",
+        "ja"
+      ],
+      "likes": 2,
+      "tasks": 532
+    },
+    {
+      "id": "bf3861053f334d0e98d037e3b2c734b2",
+      "title": "ㅁㄹ",
+      "langs": [
+        "ko"
+      ],
+      "likes": 3,
+      "tasks": 530
+    },
+    {
+      "id": "6ab2359f6a8041ce85d5f341d66756ca",
+      "title": "Squid game",
+      "langs": [
+        "ko"
+      ],
+      "likes": 1,
+      "tasks": 527
+    },
+    {
+      "id": "1146ba682a5243a9931d183de42a3900",
+      "title": "이재명",
+      "langs": [
+        "ko"
+      ],
+      "likes": 0,
+      "tasks": 524
+    },
+    {
+      "id": "e0d70482a7a944dab5e79b6c2793a50e",
+      "title": "부드러운 남성",
+      "langs": [
+        "ko"
+      ],
+      "likes": 0,
+      "tasks": 524
+    },
+    {
+      "id": "0a1aaa01c39c43538361696223122efd",
+      "title": "Squid Game Announcer voice (Korean)",
+      "langs": [
+        "ko"
+      ],
+      "likes": 5,
+      "tasks": 509
+    },
+    {
+      "id": "015439baf4d443ec977c39b5de5f4c35",
+      "title": "Jung kook ",
+      "langs": [
+        "ko"
+      ],
+      "likes": 0,
+      "tasks": 506
+    },
+    {
+      "id": "19610fee4f0b4ff29ffc966ec7b4216f",
+      "title": "Ricardo (limbus company)",
+      "langs": [
+        "ko"
+      ],
+      "likes": 1,
+      "tasks": 504
+    },
+    {
+      "id": "2cbfcfa2071840e880306c5cee12cdb9",
+      "title": "아바타",
+      "langs": [
+        "ko"
+      ],
+      "likes": 5,
+      "tasks": 503
+    },
+    {
+      "id": "2ed547962b8b4aeeaa4cc5713567d6d4",
+      "title": "SEhun",
+      "langs": [
+        "ko"
+      ],
+      "likes": 2,
+      "tasks": 496
+    },
+    {
+      "id": "501bd17e4a2048638134e6382df2d9b0",
+      "title": "성우(3)",
+      "langs": [
+        "ko"
+      ],
+      "likes": 6,
+      "tasks": 496
+    },
+    {
+      "id": "1183d7e6c76d46fab94cbf16535647bc",
+      "title": "Announcer 2",
+      "langs": [
+        "en",
+        "ko"
+      ],
+      "likes": 27,
+      "tasks": 495
+    },
+    {
+      "id": "18a29dd2db324a279e76285d90408dd9",
+      "title": "Valencina",
+      "langs": [
+        "ko"
+      ],
+      "likes": 2,
+      "tasks": 494
+    },
+    {
+      "id": "64b7365c997547f085698584095a6487",
+      "title": "Pharita",
+      "langs": [
+        "ko",
+        "en"
+      ],
+      "likes": 1,
+      "tasks": 494
+    },
+    {
+      "id": "440ef7f28a7c47c2ad665e39d9177229",
+      "title": "포동포동찰떡아이스2",
+      "langs": [
+        "ko"
+      ],
+      "likes": 4,
+      "tasks": 490
+    },
+    {
+      "id": "342cc536d9834bb4a81c8a9c23c8414d",
+      "title": "조이서",
+      "langs": [
+        "ko"
+      ],
+      "likes": 4,
+      "tasks": 489
+    },
+    {
+      "id": "1d8feb1ee51f4fa08547f6d010325cc0",
+      "title": "Yoonchae",
+      "langs": [
+        "ko"
+      ],
+      "likes": 2,
+      "tasks": 486
+    },
+    {
+      "id": "9f1c0eec081744b6bdf505c365013ad0",
+      "title": "Chaeyoung",
+      "langs": [
+        "ko"
+      ],
+      "likes": 3,
+      "tasks": 486
+    }
+  ]
+}

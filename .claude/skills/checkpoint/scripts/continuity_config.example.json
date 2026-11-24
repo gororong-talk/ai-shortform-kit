@@ -1,0 +1,36 @@
+{
+  "_comment": "Optional config for session_checkpoint.py. Copy to .claude/continuity.json and edit. Delete any key to use its default.",
+
+  "title": "세션 체크포인트 / Session Checkpoint",
+
+  "_processes_comment": "pgrep -f <pattern> for long-running processes to pin in the checkpoint. Empty/omit to skip the process section.",
+  "processes": [
+    { "name": "Bot", "pattern": "main.py" },
+    { "name": "Dashboard", "pattern": "unified_server" }
+  ],
+
+  "_handoff_comment": "Manual handoff doc to extract the pending section from. Omit to auto-detect: CONTINUITY.md > RESTART_PROTOCOL.md > HANDOFF.md > SESSION.md.",
+  "handoff_doc": "CONTINUITY.md",
+  "pending_markers": ["Pending", "다음 명령", "다음 작업", "Next actions"],
+  "pending_lines": 40,
+
+  "_recent_comment": "Recently-changed source files to list (orientation for 'what was I working on').",
+  "watch_globs": ["*.py", "*.js", "*.ts", "*.md", "*.yaml"],
+  "recent_minutes": 180,
+  "max_recent_files": 20,
+
+  "_inject_comment": "inject_max_lines bounds how much of latest.md the SessionStart hook injects (keep the restore context small).",
+  "inject_max_lines": 80,
+
+  "_recovery_comment": "Optional ordered steps printed under 'Recovery checklist' — your project's first-actions-after-compact.",
+  "recovery_checklist": [
+    "Read this checkpoint + the handoff doc",
+    "Check processes against the PIDs above",
+    "If the working tree is dirty, finish/commit before new work"
+  ],
+
+  "_misc_comment": "timezone_offset_hours: null = local time; e.g. 9 = KST. keep_backups: timestamped copies to retain. git_log_count: recent commits shown.",
+  "timezone_offset_hours": null,
+  "git_log_count": 10,
+  "keep_backups": 20
+}

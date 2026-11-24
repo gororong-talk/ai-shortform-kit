@@ -1,0 +1,13 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+*.db
+media/
+productions/*/flow_images/
+productions/*/audio/
+productions/*/*.mp3
+productions/*/*.mp4
+productions/*/_tmp_compose/
+.claude/checkpoints/
